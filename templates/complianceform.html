@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+  <title>Automated Compliance</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="static/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="static/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet">
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script>
+      $(document).ready(function(){
+          $('input[type="radio"]').click(function(){
+              var inputValue = $(this).attr("value");
+              var targetBox = $("." + inputValue);
+              $(".box").not(targetBox).hide();
+              $(targetBox).show();
+          });
+      });
+  </script>
+</head>
+<body class="grey lighten-4 black-text">
+    <nav class="indigo darken-3" role="navigation">
+        <div class="nav-wrapper"><a id="logo-container" href="/" class="brand-logo logo">
+          <i class="material-icons">cloud</i>Cognizant</a>
+          <ul class="right hide-on-med-and-down">
+              <li><a href="#contact" class="transparent white-text waves-effect waves-light btn"><i class="material-icons right">insert_link</i>Connect</a></li>
+            <li><a href="#contact" class="transparent white-text waves-effect waves-light btn"><i class="material-icons right">mail</i>Enquire Now</a></li>
+          </ul>
+          <ul id="nav-mobile" class="sidenav">
+            <li><a href="#">Navbar Link</a></li>
+          </ul>
+          <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">Menu</i></a>
+        </div>
+      </nav>
+  <div id="textarea2" class="container">
+  <div class="card-panel white indigo-text darken-3"><h4 class="center-align">Automated Compliance Detection & Remediation</h4><h6 class="center-align black-text">Give us some data, to get your job done!</h6></div>
+  <form class="col s12" action="{{ url_for('handledata_compliance') }}" method="POST">
+	 <div class="row">
+      <h5 class="center-align indigo-text darken-3">Region</h5>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="regionname" type="text" class="validate black-text" name="region">
+          <label for="regionname">Region of Deployment</label>
+        </div>
+      </div>
+
+		  <h5 class="center-align indigo-text darken-3">Config Recorder Configuration</h5>
+		  <div class="input-field col s6">
+			  <input id="configrecorder" type="text" class="validate black-text" name="configrec">
+        <label for="configrecorder">Config Recorder Enabled? (True/False)</label></div>
+        <div class=" input-field col s6">
+            <input id="s3available" type="text" class="validate black-text" name="s3avail">
+            <label for="s3avaiable">True/False</label>
+            <span class="helper-text" data-error="wrong" data-success="right">Config Recorder needs an s3 bucket to store logs.</span></div>
+        </div>
+        <div class=" input-field col s6">
+            <input id="s3available" type="text" class="validate black-text" name="s3availbuck">
+            <label for="s3avaiable">Enter the S3 Bucket if available</label>
+            </div>
+        </div>
+	  <h5 class="center-align indigo-text darken-3">SES Configuration</h5>    
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="fromses" type="email" class="validate black-text" name="fromses">
+          <label for="fromses">From E-mail Address</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="toses" type="email" class="validate black-text" name="toses">
+          <label for="toses">To E-mail Address</label>
+          <span class="helper-text" data-error="wrong" data-success="right">Multiple Mail Ids should be seperated by a ' / '</span>
+        </div>
+            <div class="input-field col s12">
+              <input id="reportschedule" type="text" class="validate black-text" name="report">
+              <label for="reportschedule">Schedule Reporting (1day, or 30min, or 24days)</label>
+            </div>
+      </div>
+      <h5 class="center-align indigo-text darken-3">ITSM Tool..?</h5>
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="itsmfeed" type="text" class="validate black-text" name="itsmfeed">
+          <label for="itsmfeed">Do you have an ITSM Tool? (Yes/No)</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="itsmprotocol" type="text" class="validate black-text" name="itsmprotocol">
+          <label for="itsmprotocol">Protocol(HTTPS)</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="itsmendpoint" type="text" class="validate black-text" name="itsmendpoint">
+          <label for="itsmendpoint">ITSM Endpoint</label>
+        </div>
+      </div>
+      <h5 class="center-align indigo-text darken-3">S3 Bucket</h5>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="bucketname" type="text" class="validate black-text" name="bucketname">
+          <label for="bucketname">Bucket containing Packages & Scripts</label>
+        </div>
+      </div>
+      <div class="center-align"><input type="submit" value="Submit" class="indigo darken-3 white-text waves-effect btn waves-light"></div>
+  </form>
+  </div>
+</div>
+</div>
+   <!--  Scripts-->
+   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+   <script src="static/js/materialize.js"></script>
+   <script src="static/js/init.js"></script>
+   
+ </body>
+</html>
